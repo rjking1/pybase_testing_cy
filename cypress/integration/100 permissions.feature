@@ -9,6 +9,7 @@ Feature: Permission checks
       And I can edit a member
       And I can see "Welcome pack sent"
       And I can see "Email new members"
+    And   I logout
 
   Scenario: Treasurer
     Given I login as the treasurer
@@ -18,6 +19,7 @@ Feature: Permission checks
       But I can see "Mark as paid"
       And I cannot see "Welcome pack sent"
       And I cannot see "Email new members"
+    And   I logout
 
   Scenario: Committee member
     Given I login as a committee member
@@ -27,3 +29,4 @@ Feature: Permission checks
       But I cannot see "Mark as paid"
       And I cannot see "Welcome pack sent"
       And I cannot see "Email new members"
+    And   I logout

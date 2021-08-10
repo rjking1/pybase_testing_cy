@@ -7,7 +7,8 @@ Then("I can go to New members", () => {
 })
 
 Then('I can edit a member', () => {
-    assert.notEqual(cy.get('.editrow').length, 0);
+    // assert.notEqual(cy.get('.editrow').length, 0);
+    cy.get('.editrow').should('exist')
 })
 
 Then('I cannot edit a member', () => {
