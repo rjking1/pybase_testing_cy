@@ -1,4 +1,14 @@
 {
   "testFiles": "**/*.feature",
-  "video": false
+  "video": false,
+  "watchForFileChanges": false,
+
+  "viewportWidth": 1280,
+  "viewportHeight": 1280,
+
+  "env": {
+    "TAGS": "not @skip"
+  },
+
+  "chromeWebSecurity": false
 }

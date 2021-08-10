@@ -1,1 +1,10 @@
-/node_modules/
+notes-do-not-commit.txt
+
+node_modules/
+
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/reports/
+
+cypress.env.json

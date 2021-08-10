@@ -1,46 +1,57 @@
 import { Given, Then } from "cypress-cucumber-preprocessor/steps";
 
-// const TEST_SYSTEM_URL = 'localhost:5000'
-const TEST_SYSTEM_URL  = 'https://www.artspace7.com.au/pybase/test'
-// const TEST_SYSTEM_URL  = 'https://www.artspace7.com.au/pybase/plus'
-
-const PROD_DB = 'hut';  // or rides2
-const TEST_DB = 'test';
+Given("I login as a developer", () => {
+    cy.visit(Cypress.env("PROD_URL"));
+    cy.get('#db').focus().clear().type(Cypress.env("DB_NAME"));
+    cy.get('#user').focus().clear().type(Cypress.env("DEV_NAME"));
+    cy.get('#password').focus().clear().type(Cypress.env("DEV_PASSWORD"));
+    cy.get('#login').click();
+})
 
 Given('I login as an admin', () => { 
-    cy.visit(TEST_SYSTEM_URL);
-    cy.get('#db').clear().type(TEST_DB);
-    cy.get('#user').type("HEATHER");
-    cy.get('#password').type("goldie");
+    cy.visit(Cypress.env("PROD_URL"));
+    cy.get('#db').focus().clear().type(Cypress.env("DB_NAME"));
+    cy.get('#user').focus().clear().type(Cypress.env("ADMIN_NAME"));
+    cy.get('#password').focus().clear().type(Cypress.env("ADMIN_PASSWORD"));
+    cy.get('#login').click();
+});
+
+Given('I login as the treasurer', () => {
+    cy.visit(Cypress.env("PROD_URL"));
+    cy.get('#db').focus().clear().type(Cypress.env("DB_NAME"));
+    cy.get('#user').focus().clear().type(Cypress.env("TREAS_NAME"));
+    cy.get('#password').focus().clear().type(Cypress.env("TREAS_PASSWORD"));
     cy.get('#login').click();
 });
 
 Given('I login as a committee member', () => {
-    cy.visit(TEST_SYSTEM_URL);
-    cy.get('#db').clear().type(TEST_DB);
-    cy.get('#user').type("rk");
-    cy.get('#password').type("viking"); 
+    cy.visit(Cypress.env("PROD_URL"));
+    cy.get('#db').focus().clear().type(Cypress.env("DB_NAME"));
+    cy.get('#user').focus().clear().type(Cypress.env("COMM_NAME"));
+    cy.get('#password').focus().clear().type(Cypress.env("COMM_PASSWORD"));
     cy.get('#login').click();
 });
 
-Given("I login as a developer to the test db", () => {
-        cy.visit(TEST_SYSTEM_URL);
-    cy.get('#db').clear().type(TEST_DB);
-    cy.get('#user').type("RICHARD");
-    cy.get('#password').type("viking");
-    cy.get('#login').click();
-})
-
-Given('I login as a developer to the production database', () => {
-    cy.visit(TEST_SYSTEM_URL);
-    cy.get('#db').clear().type(PROD_DB);
-    cy.get('#user').type("RICHARD");
-    cy.get('#password').type("viking");
-    cy.get('#login').click();
-});
-
-
+// Given('I login as a developer to the production database', () => {
+//     cy.visit(TEST_SYSTEM_URL);
+//     cy.get('#db').clear().type(PROD_DB);
+//     cy.get('#user').type("<user name>");
+//     cy.get('#password').type("<pwd>");
+//     cy.get('#login').click();
+// });
 
 Then('I logout', () => {
-    cy.visit(TEST_SYSTEM_URL);
+    cy.visit(Cypress.env("PROD_URL"));
 });
+
+//======================= move elsewhere
+
+// async function doFetchGet(db, sql) {
+//     let resp = await fetch(
+//     'https://www.artspace7.com.au/dsql/json_helper_get.php?db=' +
+//         db +
+//         '&sql=' +
+//         sql,
+//     )
+//     return await resp.json()
+// }
