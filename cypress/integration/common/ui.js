@@ -14,9 +14,3 @@ Then("I go to {string}", (str) => {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 })
-
-// to become gen filter test
-Then('I select a member', (str) => {
-    cy.get("#searchBox").focus().clear().type("Richard")
-    cy.get('.checkrow:visible').click()
-})
