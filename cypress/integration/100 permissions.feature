@@ -5,7 +5,7 @@ Feature: Permission checks
   Scenario: Admin (Heather)
     Given I login as an admin
      Then I cannot see "Database"
-     But  I can go to New members
+     But  I go to "New Members"
       And I can edit a member
       And I can see "Welcome pack sent"
       And I can see "Email new members"
@@ -14,7 +14,7 @@ Feature: Permission checks
   Scenario: Treasurer
     Given I login as the treasurer
      Then I cannot see "Database"
-      But I can go to New members
+      But I go to "New Members"
       But I cannot edit a member
       But I can see "Mark as paid"
       And I cannot see "Welcome pack sent"
@@ -24,7 +24,7 @@ Feature: Permission checks
   Scenario: Committee member
     Given I login as a committee member
      Then I cannot see "Database"
-      But I can go to New members
+      But I go to "New Members"
       But I cannot edit a member
       But I cannot see "Mark as paid"
       And I cannot see "Welcome pack sent"
