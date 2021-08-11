@@ -1,4 +1,3 @@
-notes-do-not-commit.txt
 
 node_modules/
 
@@ -7,4 +6,5 @@ cypress/screenshots/
 cypress/downloads/
 cypress/reports/
 
+notes-do-not-commit.txt
 cypress.env.json
