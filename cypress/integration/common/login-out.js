@@ -6,6 +6,8 @@ Given("I login as a developer", () => {
     cy.get('#user').focus().clear().type(Cypress.env("DEV_NAME"));
     cy.get('#password').focus().clear().type(Cypress.env("DEV_PASSWORD"));
     cy.get('#login').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
 })
 
 Given('I login as an admin', () => { 
@@ -14,6 +16,8 @@ Given('I login as an admin', () => {
     cy.get('#user').focus().clear().type(Cypress.env("ADMIN_NAME"));
     cy.get('#password').focus().clear().type(Cypress.env("ADMIN_PASSWORD"));
     cy.get('#login').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
 });
 
 Given('I login as the treasurer', () => {
@@ -22,6 +26,8 @@ Given('I login as the treasurer', () => {
     cy.get('#user').focus().clear().type(Cypress.env("TREAS_NAME"));
     cy.get('#password').focus().clear().type(Cypress.env("TREAS_PASSWORD"));
     cy.get('#login').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
 });
 
 Given('I login as a committee member', () => {
@@ -30,6 +36,8 @@ Given('I login as a committee member', () => {
     cy.get('#user').focus().clear().type(Cypress.env("COMM_NAME"));
     cy.get('#password').focus().clear().type(Cypress.env("COMM_PASSWORD"));
     cy.get('#login').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
 });
 
 // Given('I login as a developer to the production database', () => {
