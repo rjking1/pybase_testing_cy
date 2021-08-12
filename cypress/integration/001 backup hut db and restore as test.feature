@@ -15,5 +15,5 @@ Feature: Backup db and restore as test
   Scenario: Check audit trail
     And   I login as a committee member
     And   save "Audit trail" to csv
-    Then  It should match the expected "Audit trail" csv file
+    Then  It should match the expected "Audit-trail" csv file
     And   I logout
