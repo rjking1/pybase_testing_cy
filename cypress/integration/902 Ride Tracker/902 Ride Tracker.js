@@ -2,10 +2,17 @@ import { And, Then } from "cypress-cucumber-preprocessor/steps";
 import {
   compareFilesUsingRegExp,
   exportPartialDOMToFile,
+  exportTableToCSV,
 } from "../common/utils.js";
 
 And("I login to Ride Tracker", () => {
   cy.visit(Cypress.env("RIDE_TRACKER_URL"));
+  cy.get("#db").focus().clear().type(Cypress.env("DB_NAME"));
+  cy.get("#user").focus().clear().type(Cypress.env("DEV_NAME"));
+  cy.get("#password").focus().clear().type(Cypress.env("DEV_PASSWORD"));
+  cy.get("#login").click();
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(1000);
 });
 
 And("check the stats are within reason", () => {
@@ -17,4 +24,15 @@ And("check the stats are within reason", () => {
     `./cypress/downloads/${fileName}`,
     `./cypress/expected/${fileName}`
   );
+});
+
+And("add a ride", () => {
+  cy.contains("Add").click();
+  // todo add some data once we have ids
+  cy.contains("Add Ride").click();
+});
+
+And("check the ride is the most recent", () => {
+  exportTableToCSV(cy.get('table'), "rides.csv");
+  compareFilesUsingRegExp("./cypress/downloads/rides.csv", "./cypress/expected/rides.csv", 2);
 });
