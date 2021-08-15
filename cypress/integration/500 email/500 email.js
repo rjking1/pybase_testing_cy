@@ -14,8 +14,15 @@ Then("I add a member", () => {
   cy.contains("✅ Update").click();
 });
 
-// to become gen filter test
-Then("I select a member", (str) => {
-  cy.get("#searchBox").focus().clear().type("Aaaa");
+Then("I select the member", () => {
   cy.get(".checkrow:visible").click();
+});
+
+Then("I filter on {string}", (str) => {
+  cy.get("#searchBox").focus().clear().type(str);
+});
+
+Then("I sort the list on {string}", (str) => {
+  cy.get("#searchBox"); // to make sure we wait to get back to list
+  cy.contains(str).click();
 });
