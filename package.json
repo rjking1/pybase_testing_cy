@@ -6,16 +6,15 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run --browser chrome --headless",
-    "cy:dot": "cypress run --reporter dot",
+    "test": "npm run cy:run",
+    "chrome": "cypress run --browser chrome --headed",
+    "multi-skip": "npx cypress-tags run -e TAGS=\"not @skip and not @skip_if_x\"",
+    "focus": "npx cypress-tags run -e TAGS=\"@focus\"",
     "eslint": "eslint \"cypress/**/*.js\"",
     "eslint:fix": "eslint --fix \"cypress/**/*.js\"",
     "prettier:check": "prettier --check \"cypress/**/*.{js,css,json,md,less}\"",
     "prettier:fix": "prettier --write \"cypress/**/*.{js,css,json,md,less}\"",
-    "precommit": "lint-staged",
-    "test": "npm run cy:run",
-    "uat": "npx cypress-tags run -e TAGS=\"not @skip and not @skip_if_uat\"",
-    "cy:open:uat": "cypress open -e TAGS=\"not @skip and not @skip_if_uat\"",
-    "focus": "npx cypress-tags run -e TAGS=\"@focus\""
+    "precommit": "lint-staged"
   },
   "keywords": [],
   "author": "",
