@@ -4,6 +4,7 @@ Feature: Email tests
 
   Scenario: Admin (Heather)
     Given I login as an admin
+      And clean up previously added members
      Then go to "New Members"
       And I add a member
       And I select a member
