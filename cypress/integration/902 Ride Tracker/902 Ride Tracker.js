@@ -28,11 +28,18 @@ And("check the stats are within reason", () => {
 
 And("add a ride", () => {
   cy.contains("Add").click();
-  // todo add some data once we have ids
+  cy.get("#id_km").focus().clear().type("99");
+  cy.get("#id_alt").focus().clear().type("1234");
+  cy.get("#id_desc").focus().clear().type("test ride");
+  cy.get("#id_weather").focus().clear().type("sunny");
   cy.contains("Add Ride").click();
 });
 
 And("check the ride is the most recent", () => {
-  exportTableToCSV(cy.get('table'), "rides.csv");
-  compareFilesUsingRegExp("./cypress/downloads/rides.csv", "./cypress/expected/rides.csv", 2);
+  exportTableToCSV(cy.get("table"), "rides.csv");
+  compareFilesUsingRegExp(
+    "./cypress/downloads/rides.csv",
+    "./cypress/expected/rides.csv",
+    2
+  );
 });
