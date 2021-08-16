@@ -2,7 +2,7 @@ Feature: Email tests
 
   Test using Admin user 
 
-  This als tests sorting and filtering --too much in one go if there is a problem
+  This also tests sorting and filtering --too much in one go if there is a problem
 
   Scenario: Admin (Heather)
     Given I login as an admin
@@ -11,9 +11,10 @@ Feature: Email tests
       And I add a member
       And I sort the list on "Mobile"
       And I filter on "Aaaa"
+      And I sort the list on random column
       And I select the member
-      And I filter on "King"
-      And I sort the list on "Postcode"
+      And I filter on random character
+      And I sort the list on random column
       And go to "Email new members"
-      And I can see "test@test.com"
+      And I can see "aaaa@email.com"
       And I logout
