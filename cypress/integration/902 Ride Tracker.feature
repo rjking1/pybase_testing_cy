@@ -8,4 +8,3 @@ Feature: Ride Tracker
     And   check the stats are within reason
     And   add a ride
     And   check the ride is the most recent
-    And   I logout
