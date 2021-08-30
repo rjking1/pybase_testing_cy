@@ -7,7 +7,7 @@ import {
 
 And("I login to nem on pybase", () => {
   cy.visit(Cypress.env("NEMPY_URL"));
-  cy.get("#db").focus().clear().type("nem:py");  //Cypress.env("DB_NAME"));
+  cy.get("#db").focus().clear().type(Cypress.env("DB_NAME") + ":py"); // always open test just in case
   cy.get("#user").focus().clear().type(Cypress.env("DEV_NAME"));
   cy.get("#password").focus().clear().type(Cypress.env("DEV_PASSWORD"));
   cy.get("#login").click();
