@@ -10,8 +10,7 @@ Feature: Backup rides db and restore as test
     And   Backup the "nem" db
     And   Restore to the test db
 
-  Scenario: test
+  Scenario: test 2020 weekly weather agg
     Given I login to nem on pybase
-    Then I can see "09 Current gen"
-    And I cannot see "Members"
-    And go to "09 Current gen"
+    And go to "weekly weather test 2020"
+    And It should match the expected "weather" csv file
