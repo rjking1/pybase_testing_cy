@@ -12,5 +12,5 @@ Feature: Backup rides db and restore as test
 
   Scenario: test 2020 weekly weather agg
     Given I login to nem on pybase
-    And go to "weekly weather test 2020"
-    And It should match the expected "weather" csv file
+    And save "weekly weather test 2020" to csv
+    And It should match the expected "Weekly-weather-test-2020" csv file

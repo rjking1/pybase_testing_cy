@@ -19,7 +19,7 @@ Then("go to {string}", (str) => {
 
 And("save {string} to csv", (str) => {
   cy.contains(str).click();
-  cy.contains("Save to CSV file").click();
+  cy.contains("Save to CSV file").click(); // button at bottom of a table
 });
 
 Then("It should match the expected {string} csv file", (str) => {
