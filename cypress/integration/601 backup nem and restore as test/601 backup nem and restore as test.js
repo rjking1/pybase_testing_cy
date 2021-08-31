@@ -1,5 +1,4 @@
 import { And, Then } from "cypress-cucumber-preprocessor/steps";
-import { compareFiles, exportTableToCSV } from "../common/utils.js";
 
 And("I login to nem on pybase", () => {
   cy.visit(Cypress.env("NEMPY_URL"));
