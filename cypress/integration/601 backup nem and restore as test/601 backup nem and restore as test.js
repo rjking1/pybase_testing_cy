@@ -12,3 +12,26 @@ And("I login to nem on pybase", () => {
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(1000);
 });
+
+Then("I filter on {string}", (str) => {
+  cy.get("#searchBox").focus().clear().type(str);
+});
+
+Then("I open the event", () => {
+  cy.contains("✎").click();
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(2000);
+});
+
+And("go to previous period", () => {
+  cy.contains("Prev").click();
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(2000);
+})
+
+And("go to next period", () => {
+  cy.contains("Next").click();
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(2000);
+})
+

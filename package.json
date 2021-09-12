@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
+    "cy:open:focus": "cypress open -e TAGS=\"@focus\"",
     "cy:run": "cypress run --browser chrome --headless",
     "test": "npm run cy:run",
     "chrome": "cypress run --browser chrome --headed",

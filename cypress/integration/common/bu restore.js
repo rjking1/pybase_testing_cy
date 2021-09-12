@@ -14,5 +14,5 @@ And("Restore to the test db", () => {
   cy.get("#rest_file").focus().clear().type(BU_FILE_NAME);
   cy.get("#rest_db").focus().clear().type(TEST_DB); // should be set to test but belt and braces
   cy.get("#restore").click();
-  cy.contains("Restored", { timeout: 20000 });
+  cy.contains("Restored", { timeout: 60000 });
 });
