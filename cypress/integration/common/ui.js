@@ -27,7 +27,7 @@ And("save {string} to csv", (str) => {
 
 And("save table {string} to file {string}", (selector, fileName) => {
   exportTableToCSV(cy.get(selector), fileName);
-  cy.get(selector, )
+  cy.get(selector,)
   // todo
   // will get quoted cells if we use utils.exportTableToCSV()
   // which is what Save To CSV button should use
@@ -36,6 +36,23 @@ And("save table {string} to file {string}", (selector, fileName) => {
 Then("It should match the expected {string} csv file", (str) => {
   compareFilesWithIgnoreOption(
     `./cypress/downloads/${str}.csv`,
+    `./cypress/expected/${str}.csv`,
+    [0]
+  );
+});
+
+And("save chart {string}", (selector) => {
+  // cy.get(selector)   
+  // eslint-disable-next-line cypress/no-force
+  cy.get(selector).within(() => {
+    cy.get("a[data-title='Download data as csv']").click()
+  });
+  //waitForDownloadToComplete(3000);
+});
+
+Then("the saved chart should match the expected {string} csv file", (str) => {
+  compareFilesWithIgnoreOption(
+    `./cypress/downloads/saved_chart.csv`,
     `./cypress/expected/${str}.csv`,
     [0]
   );

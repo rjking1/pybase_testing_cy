@@ -18,7 +18,7 @@ Then("I filter on {string}", (str) => {
 });
 
 Then("I open the event", () => {
-  cy.contains("✎").click();
+  cy.get(".editrow:visible").click(); // ✎
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000);
 });

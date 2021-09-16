@@ -14,13 +14,15 @@ Feature: Backup nem db on pybase and restore as test
     And It should match the expected "Weekly-weather-test-2020" csv file
 
 @focus
-  Scenario: test a saved event
+  Scenario: test a saved event and save tabular data
     Given I login to nem on pybase
     And go to "Events"
     And I filter on "high winds"
     And I open the event
     And save table "#t1" to file "high_wind_prices_etc.csv"
     And It should match the expected "high_wind_prices_etc" csv file
+    And save chart "#c3"
+    And the saved chart should match the expected "high_wind_prices_etc_chart" csv file
 
 @focus
   Scenario: test prev and next return you to same 
