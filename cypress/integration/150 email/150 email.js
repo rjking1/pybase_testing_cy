@@ -23,9 +23,7 @@ Then("I filter on {string}", (str) => {
 });
 
 Then("I filter on random character", () => {
-  const chars = [
-    "a", "b", "c", "d", "e", "q", "z"
-  ];
+  const chars = ["a", "b", "c", "d", "e", "q", "z"];
   let randomChar = chars[Math.floor(Math.random() * chars.length)];
   cy.get("#searchBox").focus().clear().type(randomChar);
 });
@@ -37,7 +35,13 @@ Then("I sort the list on {string}", (str) => {
 
 Then("I sort the list on random column", () => {
   const cols = [
-    "Mobile", "Postcode", "Name", "Lastname", "Status", "Comment", "No"
+    "Mobile",
+    "Postcode",
+    "Name",
+    "Lastname",
+    "Status",
+    "Comment",
+    "No",
   ];
   let randomCol = cols[Math.floor(Math.random() * cols.length)];
   cy.contains(randomCol).click();
