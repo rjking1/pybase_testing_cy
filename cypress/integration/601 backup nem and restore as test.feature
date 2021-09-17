@@ -24,7 +24,6 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c3"
     And the saved chart should match the expected "high_wind_prices_etc_chart" csv file
 
-@focus
   Scenario: test prev and next return you to same 
     Given I login to nem on pybase
     And go to "Events"
@@ -34,3 +33,5 @@ Feature: Backup nem db on pybase and restore as test
     And go to next period
     And save table "#t1" to file "high_wind_prices_etc.csv"
     And It should match the expected "high_wind_prices_etc" csv file
+
+  #Scenario: set date back and check "now" is correct

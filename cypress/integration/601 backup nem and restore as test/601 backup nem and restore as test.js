@@ -27,11 +27,17 @@ And("go to previous period", () => {
   cy.contains("Prev").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000);
-})
+});
 
 And("go to next period", () => {
   cy.contains("Next").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000);
-})
+});
 
+// for cy.clock(now) test
+// const now = new Date(2017, 3, 14).getTime() // April 14, 2017 timestamp
+
+// cy.clock(now)
+// cy.visit('/index.html')
+// cy.get('#date').contains('2017-04-14')
