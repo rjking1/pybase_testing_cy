@@ -1,0 +1,122 @@
+region,FUEL_TYPE,name,sum(sc.SCADAVALUE)
+NSW1,Black Coal,Bayswater,1541.32507
+NSW1,Black Coal,Eraring,881.69995
+NSW1,Black Coal,Liddell,1016.17511
+NSW1,Black Coal,Mt Piper,221.77496
+NSW1,Black Coal,Vales Point B,448.57500000000005
+NSW1,Black Coal,,4109.550090000001
+NSW1,Hydro,Blowering,51.3
+NSW1,Hydro,Guthega,68
+NSW1,Hydro,Hume,23.51475
+NSW1,Hydro,,142.81475
+NSW1,Wind,BANGOWF,9.895
+NSW1,Wind,Boco Rock Wind Farm,101.89
+NSW1,Wind,Bodangora Wind Farm,20.73346
+NSW1,Wind,Capital Wind Farm,98.5
+NSW1,Wind,COLLECWF,112.07344
+NSW1,Wind,Crookwell Wind Farm,90.25376
+NSW1,Wind,CRURWF,66.50063
+NSW1,Wind,Cullerin Range Wind Farm,19.440001
+NSW1,Wind,Gullen Range Wind Farm,180.93383999999998
+NSW1,Wind,Gunning Wind Farm,45.5169
+NSW1,Wind,Sapphire Wind Farm,17.55939
+NSW1,Wind,Silverton Wind Farm,175.15125
+NSW1,Wind,Taralga Wind Farm,86.3475
+NSW1,Wind,White Rock Wind Farm,8.85125
+NSW1,Wind,Woodlawn Wind Farm,27.06299
+NSW1,Wind,,1060.7094109999998
+NSW1,,,5313.074251000002
+QLD1,Biomass,Pioneer Sugar Mill,26.6
+QLD1,Biomass,,26.6
+QLD1,Black Coal,Callide,1019.35004
+QLD1,Black Coal,Gladstone,340.55
+QLD1,Black Coal,Kogan Creek,711.79877
+QLD1,Black Coal,Millmerran,849.65311
+QLD1,Black Coal,Stanwell,970.9098799999999
+QLD1,Black Coal,Tarong,845.20005
+QLD1,Black Coal,Tarong North,400.9375
+QLD1,Black Coal,,5138.399349999999
+QLD1,Gas,Darling Downs,113.30179
+QLD1,Gas,German Creek,35
+QLD1,Gas,Moranbah North,24.056252
+QLD1,Gas,Yarwun,118.14
+QLD1,Gas,,290.498042
+QLD1,Hydro,Kareeya,54.11749999999999
+QLD1,Hydro,,54.11749999999999
+QLD1,Wind,Coopers Gap Wind Farm,55.65
+QLD1,Wind,KEP,10.18
+QLD1,Wind,Mount Emerald Wind Farm,114.176
+QLD1,Wind,,180.006
+QLD1,,,5689.620892
+SA1,Gas,Pelican Point,177.57883
+SA1,Gas,Torrens Island,83.78
+SA1,Gas,,261.35883
+SA1,Wind,Canunda Wind Farm,42.950104
+SA1,Wind,Cathedral Rocks Wind Farm,22.359999
+SA1,Wind,Clements Gap Wind Farm,3.38565
+SA1,Wind,Hallett Wind Farm,148.64000000000001
+SA1,Wind,Hornsdale Wind Farm,305.6
+SA1,Wind,Lake Bonney Wind Farm,203.397713
+SA1,Wind,Lincoln Gap Wind Farm,108.71
+SA1,Wind,Mount Millar Wind Farm,44.318535
+SA1,Wind,North Brown Hill Wind Farm,128.3
+SA1,Wind,Snowtown North Wind Farm,15.4
+SA1,Wind,Snowtown Wind Farm,68.81499
+SA1,Wind,Starfish Hill Wind Farm,5.098513
+SA1,Wind,The Bluff Wind Farm,52.7
+SA1,Wind,Wattle Point Wind Farm,14
+SA1,Wind,Willogoleche Wind Farm,120.2
+SA1,Wind,,1283.8755039999999
+SA1,,,1545.2343340000002
+TAS1,Hydro,Butlers Gorge,9.699999
+TAS1,Hydro,Cethana,22.56238
+TAS1,Hydro,Cluny,20.506752
+TAS1,Hydro,Fisher,45.53
+TAS1,Hydro,Gordon,20.6656
+TAS1,Hydro,John Butters,24.33775
+TAS1,Hydro,Lemonthyme,54
+TAS1,Hydro,Liapootah Wayatinah Catagunya,91.13588
+TAS1,Hydro,Meadowbank,44.07036
+TAS1,Hydro,Paloona,7.93
+TAS1,Hydro,Poatina,4.6924
+TAS1,Hydro,Repulse,32.841686
+TAS1,Hydro,Rowallan,10.224
+TAS1,Hydro,Tarraleah,78
+TAS1,Hydro,Trevallyn,52.10003
+TAS1,Hydro,Tungatinah,7.13003
+TAS1,Hydro,,525.426867
+TAS1,Wind,Cattle Hill Wind Farm,142.10728
+TAS1,Wind,Granville Harbour Wind Farm,88.02
+TAS1,Wind,Musselroe Wind Farm,15.7
+TAS1,Wind,Woolnorth Wind Farm,8.380016
+TAS1,Wind,,254.20729599999999
+TAS1,,,779.6341630000001
+VIC1,Brown Coal,Loy Yang A,1152
+VIC1,Brown Coal,Loy Yang B,834.95318
+VIC1,Brown Coal,Yallourn W,873.21266
+VIC1,Brown Coal,,2860.1658399999997
+VIC1,Wind,Ararat Wind Farm,172.7
+VIC1,Wind,Bald Hills Wind Farm,98.49
+VIC1,Wind,BRYB1WF,168.47501
+VIC1,Wind,Bulgana Wind Farm,69.81
+VIC1,Wind,Challicum Hills Wind Farm,30.900002
+VIC1,Wind,Cherry Tree Wind Farm,42.98
+VIC1,Wind,Crowlands Wind Farm,79.79417
+VIC1,Wind,Dundonnell Wind Farm,295.74999
+VIC1,Wind,Kiata Wind Farm,30.7
+VIC1,Wind,Lal Lal Wind Farm,119.01
+VIC1,Wind,Macarthur Wind Farm,315.09271
+VIC1,Wind,MOORAWF,58.25
+VIC1,Wind,Mortons Lane Wind Farm,18.900002
+VIC1,Wind,Mt Gellibrand Wind Farm,65.53392
+VIC1,Wind,Mt Mercer Wind Farm,115
+VIC1,Wind,Oaklands Hill Wind Farm,60.7
+VIC1,Wind,Portland Wind Farm,108.300003
+VIC1,Wind,Salt Creek Wind Farm,52.5
+VIC1,Wind,STOCKYD,65.38
+VIC1,Wind,Waubra Wind Farm,124.415001
+VIC1,Wind,Yaloak South Wind Farm,28.5
+VIC1,Wind,Yambuk Wind Farm,17
+VIC1,Wind,,2138.1808080000005
+VIC1,,,4998.346648
+,,,18325.910288000006

@@ -54,6 +54,7 @@ And("save chart {string}", (selector) => {
       cy.get("a[data-title='Download data as csv']").click();
     });
   });
+  // stub gets auto released at next scenario/test
   //waitForDownloadToComplete(3000);
 });
 
