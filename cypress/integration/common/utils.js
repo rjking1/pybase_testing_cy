@@ -314,95 +314,6 @@ function downloadCSV(csv, filename) {
   downloadLink.click();
 }
 
-/*
-  
-  export function getUserHelpers(users) {
-    const cleanUpUsers = async () => {
-      await Promise.allSettled(
-        users.map((user) =>
-          cy.task("dbQuery", {
-            query: `WITH u as (SELECT id FROM data.user where email = $1),
-       user_log as (DELETE FROM data.user_log ul where ul."user" = (select id from u)),
-       user_config as (DELETE FROM data.user_config uc where uc.user_id = (select id from u))
-  DELETE
-  FROM data.user
-  where email = $1`,
-            params: [user.email],
-          })
-        )
-      );
-    };
-    const createUsers = async () => {
-      await Promise.allSettled(
-        users.map((user) =>
-          cy.task("dbQuery", {
-            query: `INSERT INTO data.user (name, email, password, role, company)
-                         SELECT $1, $2, $3, $4, c.id from data.company c where c.name = $5`,
-            params: [
-              user.name,
-              user.email,
-              user.password,
-              user.role,
-              user.companyName,
-            ],
-          })
-        )
-      );
-    };
-  
-    return { createUsers, cleanUpUsers };
-  }
-  
-  export function getCompanyHelpers(companies) {
-    const cleanUpCompanies = async () => {
-      await Promise.allSettled(
-        companies.map((company) =>
-          cy.task("dbQuery", {
-            query: `WITH c as (SELECT * FROM data.company where name = $1),
-       us as (select * from data.user u where u.company = (select id from c)),
-       user_log as (DELETE FROM data.user_log ul where ul."user" = any ((select id from us))),
-       user_config as (DELETE FROM data.user_config uc where uc.user_id = any ((select id from us))),
-       users as (DELETE FROM data.user where company = (select id from c)),
-       featues as (DELETE FROM data.company_allowed_feature where company = (select id from c)),
-       scopes as (DELETE FROM data.company_scope where company = (select id from c))
-  DELETE
-  from data.company
-  where name = $1`,
-            params: [company.name],
-          })
-        )
-      );
-    };
-    const createCompanies = async () => {
-      await Promise.allSettled(
-        companies.map((company) => {
-          const featues = company.features
-            .map((feature) => `('${feature}')`)
-            .join(",");
-          const featureValues = `values ${featues}`;
-          return cy.task("dbQuery", {
-            query: `WITH company as (INSERT INTO data.company (name) values ($1) returning id),
-             features(feature) as (${featureValues})
-        INSERT
-        INTO data.company_allowed_feature(company, feature)
-        SELECT c.id, f.feature
-        from company c,
-             features f`,
-            params: [company.name],
-          });
-        })
-      );
-    };
-  
-    return { createCompanies, cleanUpCompanies };
-  }
-  
-  export function random(length = 8) {
-    return Math.random().toString(16).substr(2, length);
-  }
-  
-  */
-
 export function compareFilesUsingRegExp(
   actualFileName,
   expectedFileName,
@@ -458,4 +369,8 @@ export function compareFilesWithIgnoreOption(a, e, ignoreCols) {
       }
     });
   });
+}
+
+export function random(length = 8) {
+  return Math.random().toString(16).substr(2, length);
 }
