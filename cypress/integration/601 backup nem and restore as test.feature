@@ -8,11 +8,13 @@ Feature: Backup nem db on pybase and restore as test
     And   Backup the "nem" db
     And   Restore to the test db
 
+@focus
   Scenario: test 2020 weekly weather agg
     Given I login to "test" on pybase
     And save "test case 3 weekly weather 2020" to csv
     And It should match the expected "Weekly-weather-test-2020" csv file
 
+@focus
   Scenario: test a saved event and save all tabular data
     Given I login to "test" on pybase
     And go to ". Events"
@@ -23,6 +25,7 @@ Feature: Backup nem db on pybase and restore as test
     And save table "#t2" to file "high_wind_interconnectors.csv"
     And It should match the expected "high_wind_interconnectors" csv file
 
+@focus
   Scenario: test prev and next return you to same data
     Given I login to "test" on pybase
     And go to ". Events"
@@ -35,6 +38,7 @@ Feature: Backup nem db on pybase and restore as test
     And save table "#t2" to file "high_wind_interconnectors.csv"
     And It should match the expected "high_wind_interconnectors" csv file
 
+@focus
   Scenario: test a saved event and save chart 1
     Given I login to "test" on pybase
     And go to ". Events"
@@ -43,6 +47,7 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c1"
     And the saved chart should match the expected "high_wind_ft_chart" csv file
 
+@focus
   Scenario: test a saved event and save chart 2
     Given I login to "test" on pybase
     And go to ". Events"
@@ -51,6 +56,7 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c2"
     And the saved chart should match the expected "high_wind_regions_chart" csv file
 
+@focus
   Scenario: test a saved event and save chart 3
     Given I login to "test" on pybase
     And go to ". Events"
