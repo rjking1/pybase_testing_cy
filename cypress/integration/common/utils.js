@@ -282,9 +282,10 @@ function parseDate(dateString) {
 }
 
 export function exportTableToCSV(tableSelector, filename) {
+  // todo fix this has a problem that it exports all rows -- even those filterd out (hidden)
   let csv = [];
   tableSelector
-    .find("tr", { log: false })
+    .find("tr:visible", { log: false })
     .each((el) => {
       let row = [];
       cy.wrap(el, { log: false })

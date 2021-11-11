@@ -36,15 +36,23 @@ Then("I sort the list on {string}", (str) => {
 Then("Check member numbers", () => {
   cy.get("#searchBox"); // to make sure we wait to get back to list
   compareFiles(
-    "./cypress/downloads/all members.csv",
-    "./cypress/expected/all members.csv"
+    "./cypress/downloads/All-members.csv",
+    "./cypress/expected/All-members.csv"
   );
 });
 
 Then("Check subscriber numbers", () => {
   cy.get("#searchBox"); // to make sure we wait to get back to list
   compareFiles(
-    "./cypress/downloads/all subscribers.csv",
-    "./cypress/expected/all subscribers.csv"
+    "./cypress/downloads/All-subscribers.csv",
+    "./cypress/expected/All-subscribers.csv"
   );
 });
+
+And("save filtered list to file", () => {
+  // better to click button as that is what user will do
+  // but still has problem that filtered out rows are being written
+  // pybase should use common routine not its own (should fix quotedissue as well then)
+  // file name is auto generated which is also good
+  cy.contains("Save to CSV file").click();
+})

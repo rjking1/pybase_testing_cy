@@ -1,6 +1,7 @@
 Feature: Email tests
 
-  Test using Admin user 
+  Test using Admin user. this tests adding diff member types and tests filtered lists are saved to csv correctly
+  todo - pybase itseld to use common exportToCSV routine that this is using directly
 
   Scenario: Admin (Heather)
     Given I login as an admin
@@ -12,12 +13,14 @@ Feature: Email tests
      Then go to "All Members"
       And I filter on "Test"
       And I sort the list on "No"
-      And save table ".sortable" to file "all members.csv"
+      #And save filtered list to file
+      And save table ".sortable" to file "All-members.csv"
      Then Check member numbers
      Then go to "Home"
      Then go to "All Subscribers"
       And I filter on "Test"
       And I sort the list on "No"
-      And save table ".sortable" to file "all subscribers.csv"
+      #And save filtered list to file
+      And save table ".sortable" to file "All-subscribers.csv"
      Then Check subscriber numbers
       And I logout
