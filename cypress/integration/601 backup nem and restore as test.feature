@@ -1,20 +1,25 @@
 Feature: Backup nem db on pybase and restore as test
 
-  copy production to test db
+  the nem py database is now so large (> 15GB as at Dec 2021) that it cannot 
+  be nbacked up and restored as a test db in a timely db.
+  So build "from scratch" and load daily data as necessary for tests
 
-  Scenario: Restore to test db
-    Given I login to "test" on pybase
+  Scenario: Build test db from current prod db
+    # login to "nem" as can be locked out of "test" -- CAREFUL!!!
+    Given I login to "nem" on pybase
     And   go to "Database"
-    And   Backup the "nem" db
+    And   Backup the "nem" db schema copy
+    And   Backup the "nem" db schema
+    And   Restore to the test db
+    And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
-@focus
-  Scenario: test 2020 weekly weather agg
+  Scenario: load a day of high wind data
     Given I login to "test" on pybase
-    And save "test case 3 weekly weather 2020" to csv
-    And It should match the expected "Weekly-weather-test-2020" csv file
+    And   go to "Database"
+    And   Load historical data for "2021 09 11 12 00 load"
+    # create event -- then won't need to load events above
 
-@focus
   Scenario: test a saved event and save all tabular data
     Given I login to "test" on pybase
     And go to ". Events"
@@ -25,7 +30,6 @@ Feature: Backup nem db on pybase and restore as test
     And save table "#t2" to file "high_wind_interconnectors.csv"
     And It should match the expected "high_wind_interconnectors" csv file
 
-@focus
   Scenario: test prev and next return you to same data
     Given I login to "test" on pybase
     And go to ". Events"
@@ -38,7 +42,6 @@ Feature: Backup nem db on pybase and restore as test
     And save table "#t2" to file "high_wind_interconnectors.csv"
     And It should match the expected "high_wind_interconnectors" csv file
 
-@focus
   Scenario: test a saved event and save chart 1
     Given I login to "test" on pybase
     And go to ". Events"
@@ -47,7 +50,6 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c1"
     And the saved chart should match the expected "high_wind_ft_chart" csv file
 
-@focus
   Scenario: test a saved event and save chart 2
     Given I login to "test" on pybase
     And go to ". Events"
@@ -56,7 +58,6 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c2"
     And the saved chart should match the expected "high_wind_regions_chart" csv file
 
-@focus
   Scenario: test a saved event and save chart 3
     Given I login to "test" on pybase
     And go to ". Events"
@@ -65,7 +66,13 @@ Feature: Backup nem db on pybase and restore as test
     And save chart "#c3"
     And the saved chart should match the expected "high_wind_renew_fossil_chart" csv file
 
-@focus
+@skip
+  Scenario: test 2020 weekly weather agg
+    Given I login to "test" on pybase
+    And save "test case 3 weekly weather 2020" to csv
+    And It should match the expected "Weekly-weather-test-2020" csv file
+
+@skip
 Scenario: compare latest core data to AEMO latest if poss
     Given I login to "nem" on pybase
     And go to "test case 2 market time"
