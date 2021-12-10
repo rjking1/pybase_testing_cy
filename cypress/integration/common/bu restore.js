@@ -13,7 +13,7 @@ And("Backup the {string} db", (db) => {
 And("Backup the {string} db schema", (db) => {
   cy.get("#bu_db").focus().clear().type(db);
   cy.get("#bu_file").focus().clear().type(BU_FILE_NAME);
-  cy.get("#opts").focus().clear().type("-d");
+  cy.get("#opts").focus().clear().type("--routines --triggers --no-data");
   cy.get("#tables").focus().clear();
   cy.get("#backup").click();
   cy.contains("Backed up", { timeout: 60000 });
@@ -25,7 +25,7 @@ And("Backup the {string} db schema copy", (db) => {
     .focus()
     .clear()
     .type(BU_FILE_NAME + "_schema");
-  cy.get("#opts").focus().clear().type("-d");
+  cy.get("#opts").focus().clear().type("--routines --triggers --no-data");
   cy.get("#tables").focus().clear();
   cy.get("#backup").click();
   cy.contains("Backed up", { timeout: 60000 });

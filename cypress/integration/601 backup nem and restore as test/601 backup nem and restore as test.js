@@ -25,13 +25,13 @@ Then("I open the event", () => {
 });
 
 And("go to previous period", () => {
-  cy.contains("Prev").click();
+  cy.contains("-5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000);
 });
 
 And("go to next period", () => {
-  cy.contains("Next").click();
+  cy.contains("+5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000);
 });
