@@ -7,15 +7,16 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
-@skip
+
   Scenario: Build test db from current prod db
-    # login to "nem" as can be locked out of "test" -- CAREFUL!!!
+    # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
     And   go to "Database"
-    #And   Backup the "nem" db schema copy
-    #And   Backup the "nem" db schema
-    # ***** need to modify definer user to pybaseco_nem or delete the line using sed?
-    #And   Restore to the test db
+    And   Backup the "nem" db schema copy
+    And   Backup the "nem" db schema
+    # modify definer user to pybaseco_nem using sed so views will be restored
+    And Patch test sql
+    And   Restore to the test db
     And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
