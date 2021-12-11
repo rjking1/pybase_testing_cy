@@ -17,8 +17,8 @@ Feature: Backup nem db on pybase and restore as test
     # modify definer user to pybaseco_nem using sed so views will be restored
     And Patch test sql
     And   Restore to the test db
-    And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
-    And   Restore to the test db
+    #And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
+    #And   Restore to the test db
 
 @skip
   Scenario: load a day of high wind data
