@@ -21,7 +21,7 @@ Then("I filter on {string}", (str) => {
 Then("I open the event", () => {
   cy.get(".editrow:visible").click(); // ✎
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(2000);
+  cy.wait(3000);
 });
 
 And("go to previous period", () => {

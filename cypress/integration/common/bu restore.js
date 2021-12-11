@@ -53,15 +53,15 @@ And("Load historical data for {string}", (date) => {
   cy.contains("Loaded", { timeout: 150000 });
 });
 
-And("Patch test sql", () => {
+// not used now
+And("Patch test.sql", () => {
   cy.get("#py_params")
     .focus()
     .clear()
     .type(
-      "sed -i 's/50013 DEFINER=.pybaseco./50013 DEFINER=pybaseco_nem/g' /home2/pybaseco/public_html/dsql/test.sql"
+      "sed -i 's/pybaseco/pybaseco_nem/g' /home2/pybaseco/public_html/dsql/test.sql"
     );
   cy.get("#shell_exec").click();
   cy.contains("Done", { timeout: 5000 });
 });
 
-// $cmd = "/home2/pybaseco/public_html/nempy/nem-env/bin/python /home2/pybaseco/public_html/nempy/aemo_hist_loader.py ".$params;

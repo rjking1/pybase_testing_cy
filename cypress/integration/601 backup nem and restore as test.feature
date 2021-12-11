@@ -7,24 +7,21 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
-
   Scenario: Build test db from current prod db
     # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
     And   go to "Database"
+    # backup modifies definer user to pybaseco_nem so views will be restored
     And   Backup the "nem" db schema copy
     And   Backup the "nem" db schema
-    # modify definer user to pybaseco_nem using sed so views will be restored
-    And Patch test sql
     And   Restore to the test db
-    #And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
-    #And   Restore to the test db
+    And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
+    And   Restore to the test db
 
-@skip
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
-    And   Load historical data for "2021 09 11 12 00 load pybaseco_test"
+    And   Load historical data for "2021 09 11 05 07 load pybaseco_test"
     # create event -- then won't need to load events above
 
   Scenario: test a saved event and save all tabular data
