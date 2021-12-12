@@ -21,7 +21,7 @@ Feature: Backup nem db on pybase and restore as test
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
-    And   Load historical data for "2021 09 11 05 07 load pybaseco_test"
+    And   Load historical data for "2021 09 11 05 00 11 07 00 load pybaseco_test"
     # create event -- then won't need to load events above
 
   Scenario: test a saved event and save all tabular data

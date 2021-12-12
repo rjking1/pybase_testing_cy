@@ -47,8 +47,8 @@ And("Restore to the test db", () => {
   cy.contains("Restored", { timeout: 120000 });
 });
 
-And("Load historical data for {string}", (date) => {
-  cy.get("#py_params").focus().clear().type(date);
+And("Load historical data for {string}", (date_range) => {
+  cy.get("#py_params").focus().clear().type(date_range);
   cy.get("#run_py").click();
   cy.contains("Loaded", { timeout: 150000 });
 });
