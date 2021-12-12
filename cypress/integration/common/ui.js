@@ -38,10 +38,9 @@ And("save table {string} to file {string}", (selector, fileName) => {
 });
 
 Then("It should match the expected {string} csv file", (str) => {
-  compareFilesWithIgnoreOption(
+  compareFiles(  //WithIgnoreOption(
     `./cypress/downloads/${str}.csv`,
-    `./cypress/expected/${str}.csv`,
-    [0]
+    `./cypress/expected/${str}.csv`
   );
 });
 

@@ -356,7 +356,8 @@ export function exportPartialDOMToFile(selector, filename) {
   });
 }
 
-export function compareFilesWithIgnoreOption(a, e, ignoreCols) {
+// don't use this routine until properly tested!
+export function compareFilesWithIgnoreOption(a, e, ignoreCols = [-1]) {
   // let alines =
   cy.readFile(a).then((actual) => {
     cy.readFile(e).then((expected) => {
