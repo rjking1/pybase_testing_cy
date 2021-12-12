@@ -21,19 +21,24 @@ Then("I filter on {string}", (str) => {
 Then("I open the event", () => {
   cy.get(".editrow:visible").click(); // ✎
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(3000);
+  cy.wait(500);
+});
+
+And("wait {int} ms", (ms) => {
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(ms);
 });
 
 And("go to previous period", () => {
   cy.contains("-5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(2000);
+  cy.wait(500);
 });
 
 And("go to next period", () => {
   cy.contains("+5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(2000);
+  cy.wait(500);
 });
 
 // for cy.clock(now) test

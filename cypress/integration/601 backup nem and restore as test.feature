@@ -21,7 +21,7 @@ Feature: Backup nem db on pybase and restore as test
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
-    And   Load historical data for "2021 09 11 05 00 11 07 00 load pybaseco_test"
+    And   Load historical data for "2021 09 11 05 30 11 06 30 load pybaseco_test"
     # create event -- then won't need to load events above
 
   Scenario: test a saved event and save all tabular data
@@ -51,6 +51,7 @@ Feature: Backup nem db on pybase and restore as test
     And go to ". Events"
     And I filter on "Test case 1 - High Winds"
     And I open the event
+    And wait 2000 ms
     And save chart "#c1"
     And the saved chart should match the expected "high_wind_ft_chart" csv file
 
