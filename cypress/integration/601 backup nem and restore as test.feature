@@ -7,6 +7,7 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
+@skip
   Scenario: Build test db from current prod db
     # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
@@ -18,6 +19,7 @@ Feature: Backup nem db on pybase and restore as test
     And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
+@skip
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
@@ -65,17 +67,34 @@ Feature: Backup nem db on pybase and restore as test
     And the saved chart should match the expected "high_wind_regions_chart" csv file
 
   Scenario: test a saved event and save chart 3
-    Given I login to "test" on pybase
-    And go to ". Events"
-    And I filter on "Test case 1 - High Winds"
-    And I open the event
-    And go to "Generation breakdown"
+    #Given I login to "test" on pybase
+    #And go to ". Events"
+    #And I filter on "Test case 1 - High Winds"
+    #And I open the event
+    #And go to "Generation breakdown"
     And save chart "#c3"
     And the saved chart should match the expected "high_wind_renew_fossil_chart" csv file
 
   # -12 to 12 hours
 
+  Scenario: test a saved event and save qld first chart
+    Given I login to "test" on pybase
+    And go to ". Events"
+    And I filter on "Test case 1 - High Winds"
+    And I open the event
+    And go to "-12 to +12 hours"
+    And save chart "#c2-0"
+    And the saved chart should match the expected "qld_price_demand" csv file
+  Scenario: test a saved event and save nsw chart
+    And save chart "#c2-1"
+    And the saved chart should match the expected "nsw_price_demand" csv file
+  Scenario: test a saved event and save qld gen
+    And save chart "#c3-0"
+    And the saved chart should match the expected "qld_gen" csv file
+
   # bidstacks
+
+  # load 2016-09-28 where rooftop is of type DAILY !
 
 @skip
   Scenario: test 2020 weekly weather agg
