@@ -12,6 +12,7 @@ Feature: Backup db and restore as test
     And   I cleanup the audit trail
     And   I logout
 
+@skip
   Scenario: Check audit trail
     And   I login as a committee member
     And   save "Audit trail" to csv

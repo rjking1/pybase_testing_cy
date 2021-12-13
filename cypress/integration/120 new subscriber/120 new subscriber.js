@@ -2,25 +2,25 @@ import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 import { compareFiles } from "../common/utils.js";
 
 And("clean up previously added members", () => {
-  cy.execSQL("delete from members where LASTNAME = 'Test' "); // defaults to 'test' (as the DB name)
-  cy.execSQL("delete from members where NAME = 'Ssss' "); // defaults to 'test' (as the DB name)
+  cy.execSQL("delete from members where Lastname = 'Test' "); // defaults to 'test' (as the DB name)
+  cy.execSQL("delete from members where Name = 'Ssss' "); // defaults to 'test' (as the DB name)
 });
 
 Then("I add a subscriber", () => {
   cy.contains("+ Add").click();
-  cy.get('[name="NAME"]').focus().clear().type("Ssss");
-  cy.get('[name="LASTNAME"]').focus().clear().type("Test");
-  cy.get('[name="status"]').focus().clear().type("Subscriber");
-  cy.get('[name="EMAIL"]').focus().clear().type("ssss@email.com");
+  cy.get('[name="Name"]').focus().clear().type("Ssss");
+  cy.get('[name="Lastname"]').focus().clear().type("Test");
+  cy.get('[name="Status"]').focus().clear().type("Subscriber");
+  cy.get('[name="Email"]').focus().clear().type("ssss@email.com");
   cy.contains("✅ Update").click();
 });
 
 Then("I add a member", () => {
   cy.contains("+ Add").click();
-  cy.get('[name="NAME"]').focus().clear().type("Bbbb");
-  cy.get('[name="LASTNAME"]').focus().clear().type("Test");
-  cy.get('[name="status"]').focus().clear().type("New");
-  cy.get('[name="EMAIL"]').focus().clear().type("bbbb@email.com");
+  cy.get('[name="Name"]').focus().clear().type("Bbbb");
+  cy.get('[name="Lastname"]').focus().clear().type("Test");
+  cy.get('[name="Status"]').focus().clear().type("New");
+  cy.get('[name="Email"]').focus().clear().type("bbbb@email.com");
   cy.contains("✅ Update").click();
 });
 

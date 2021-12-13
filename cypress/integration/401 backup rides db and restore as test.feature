@@ -2,7 +2,6 @@ Feature: Backup rides db and restore as test
 
   copy production to test db
   checks basic logins
-  and can execute sql and get audit trail
 
   Scenario: Restore to test db
     Given I login as a developer

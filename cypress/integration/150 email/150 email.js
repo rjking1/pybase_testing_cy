@@ -7,10 +7,10 @@ And("clean up previously added members", () => {
 // to be moved somewhere that can be called from many places
 Then("I add a member", () => {
   cy.contains("+ Add").click();
-  cy.get('[name="NAME"]').focus().clear().type("Aaaa");
-  cy.get('[name="LASTNAME"]').focus().clear().type("Test");
-  cy.get('[name="status"]').focus().clear().type("New");
-  cy.get('[name="EMAIL"]').focus().clear().type("aaaa@email.com");
+  cy.get('[name="Name"]').focus().clear().type("Aaaa");
+  cy.get('[name="Lastname"]').focus().clear().type("Test");
+  cy.get('[name="Status"]').focus().clear().type("New");
+  cy.get('[name="Email"]').focus().clear().type("aaaa@email.com");
   cy.contains("✅ Update").click();
 });
 
