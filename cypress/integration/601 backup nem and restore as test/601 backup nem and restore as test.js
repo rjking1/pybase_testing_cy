@@ -32,13 +32,13 @@ And("wait {int} ms", (ms) => {
 And("go to previous period", () => {
   cy.contains("-5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(500);
+  cy.wait(1500);
 });
 
 And("go to next period", () => {
   cy.contains("+5 Min").click();
   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  cy.wait(500);
+  cy.wait(1500);
 });
 
 // for cy.clock(now) test

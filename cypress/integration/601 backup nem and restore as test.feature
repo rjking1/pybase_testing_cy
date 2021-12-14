@@ -105,7 +105,7 @@ Feature: Backup nem db on pybase and restore as test
   Scenario: test a saved event and save qld chart
     Given I login to "test" on pybase
     And go to ". Events"
-    And I filter on "Test case 1 - High Winds"
+    And I filter on "Black"
     And I open the event
     And go to "-12 to +12 hours"
     And save chart "#c2-0"

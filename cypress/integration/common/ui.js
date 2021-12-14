@@ -1,9 +1,5 @@
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
-import {
-  compareFiles,
-  compareFilesWithIgnoreOption,
-  exportTableToCSV,
-} from "../common/utils.js";
+import { compareFiles, exportTableToCSV } from "../common/utils.js";
 
 Then("I can see {string}", (str) => {
   cy.contains(str).should("exist");
@@ -38,7 +34,7 @@ And("save table {string} to file {string}", (selector, fileName) => {
 });
 
 Then("It should match the expected {string} csv file", (str) => {
-  compareFiles(  //WithIgnoreOption(
+  compareFiles(
     `./cypress/downloads/${str}.csv`,
     `./cypress/expected/${str}.csv`
   );
@@ -58,9 +54,8 @@ And("save chart {string}", (selector) => {
 });
 
 Then("the saved chart should match the expected {string} csv file", (str) => {
-  compareFilesWithIgnoreOption(
+  compareFiles(
     `./cypress/downloads/saved_chart.csv`,
-    `./cypress/expected/${str}.csv`,
-    [0]
+    `./cypress/expected/${str}.csv`
   );
 });
