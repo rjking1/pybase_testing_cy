@@ -94,6 +94,35 @@ Feature: Backup nem db on pybase and restore as test
 
   # load 2016-09-28 where rooftop is of type DAILY !
 
+  Scenario: load system black in SA -- rooftop pv has DAILY as type
+    Given I login to "test" on pybase
+    And   go to "Database"
+    And   Load historical data for "2016 09 28 15 00 28 17 00 load pybaseco_test"
+    # create event -- then won't need to load events above
+
+  # -12 to 12 hours
+
+  Scenario: test a saved event and save qld chart
+    Given I login to "test" on pybase
+    And go to ". Events"
+    And I filter on "Test case 1 - High Winds"
+    And I open the event
+    And go to "-12 to +12 hours"
+    And save chart "#c2-0"
+    And the saved chart should match the expected "qld_price_demand_16" csv file
+  Scenario: and save sa chart
+    And save chart "#c2-3"
+    And the saved chart should match the expected "sa1_price_demand_16" csv file
+  Scenario: save qld gen
+    And save chart "#c3-0"
+    And the saved chart should match the expected "qld_gen_16" csv file
+  Scenario: save sa gen
+    And save chart "#c3-3"
+    And the saved chart should match the expected "sa1_gen_16" csv file
+
+  # bidstacks
+
+
 @skip
   Scenario: test 2020 weekly weather agg
     Given I login to "test" on pybase
