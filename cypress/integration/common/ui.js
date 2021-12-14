@@ -53,9 +53,22 @@ And("save chart {string}", (selector) => {
   //waitForDownloadToComplete(3000);
 });
 
+And("save chart {string} to file {string}", (selector, fileName) => {
+  // pybase prompts for file name
+  // https://applitools.com/blog/testing-browser-alerts-confirmations-prompts-cypress/
+  cy.window().then((win) => {
+    cy.stub(win, "prompt").returns(fileName);
+    cy.get(selector).within(() => {
+      cy.get("a[data-title='Download data as csv']").click();
+    });
+  });
+  // stub gets auto released at next scenario/test
+  //waitForDownloadToComplete(3000);
+});
+
 Then("the saved chart should match the expected {string} csv file", (str) => {
   compareFiles(
-    `./cypress/downloads/saved_chart.csv`,
+    `./cypress/downloads/${str}.csv`,
     `./cypress/expected/${str}.csv`
   );
 });

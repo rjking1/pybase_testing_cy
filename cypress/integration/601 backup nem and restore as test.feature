@@ -7,6 +7,7 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
+#@skip
   Scenario: Build test db from current prod db
     # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
@@ -18,6 +19,7 @@ Feature: Backup nem db on pybase and restore as test
     And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
+#@skip
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
@@ -52,7 +54,7 @@ Feature: Backup nem db on pybase and restore as test
     And I filter on "Test case 1 - High Winds"
     And I open the event
     And wait 2000 ms
-    And save chart "#c1"
+    And save chart "#c1" to file "high_wind_ft_chart"
     And the saved chart should match the expected "high_wind_ft_chart" csv file
 
   Scenario: test a saved event and save chart 2
@@ -61,17 +63,19 @@ Feature: Backup nem db on pybase and restore as test
     And I filter on "Test case 1 - High Winds"
     And I open the event
     And go to "Generation breakdown"
-    And save chart "#c2"
+    And save chart "#c2" to file "high_wind_regions_chart"
     And the saved chart should match the expected "high_wind_regions_chart" csv file
-
   Scenario: test a saved event and save chart 3
-    #Given I login to "test" on pybase
-    #And go to ". Events"
-    #And I filter on "Test case 1 - High Winds"
-    #And I open the event
-    #And go to "Generation breakdown"
-    And save chart "#c3"
+    # Given I login to "test" on pybase
+    # And go to ". Events"
+    # And I filter on "Test case 1 - High Winds"
+    # And I open the event
+    # And go to "Generation breakdown"
+    And save chart "#c3" to file "high_wind_renew_fossil_chart"
     And the saved chart should match the expected "high_wind_renew_fossil_chart" csv file
+  Scenario: test a saved event and save emissions chart (4)
+    And save chart "#c3" to file "high_wind_renew_emissions_chart"
+    And the saved chart should match the expected "high_wind_renew_emissions_chart" csv file
 
   # -12 to 12 hours
 
@@ -81,19 +85,20 @@ Feature: Backup nem db on pybase and restore as test
     And I filter on "Test case 1 - High Winds"
     And I open the event
     And go to "-12 to +12 hours"
-    And save chart "#c2-0"
+    And save chart "#c2-0" to file "qld_price_demand"
     And the saved chart should match the expected "qld_price_demand" csv file
   Scenario: test a saved event and save nsw chart
-    And save chart "#c2-1"
+    And save chart "#c2-1" to file "nsw_price_demand"
     And the saved chart should match the expected "nsw_price_demand" csv file
   Scenario: test a saved event and save qld gen
-    And save chart "#c3-0"
+    And save chart "#c3-0" to file "qld_gen"
     And the saved chart should match the expected "qld_gen" csv file
 
   # bidstacks
 
   # load 2016-09-28 where rooftop is of type DAILY !
 
+#@skip
   Scenario: load system black in SA -- rooftop pv has DAILY as type
     Given I login to "test" on pybase
     And   go to "Database"
@@ -108,16 +113,16 @@ Feature: Backup nem db on pybase and restore as test
     And I filter on "Black"
     And I open the event
     And go to "-12 to +12 hours"
-    And save chart "#c2-0"
+    And save chart "#c2-0" to file "qld_price_demand_16"
     And the saved chart should match the expected "qld_price_demand_16" csv file
   Scenario: and save sa chart
-    And save chart "#c2-3"
+    And save chart "#c2-3" to file "sa1_price_demand_16"
     And the saved chart should match the expected "sa1_price_demand_16" csv file
   Scenario: save qld gen
-    And save chart "#c3-0"
+    And save chart "#c3-0" to file "qld_gen_16"
     And the saved chart should match the expected "qld_gen_16" csv file
   Scenario: save sa gen
-    And save chart "#c3-3"
+    And save chart "#c3-3" to file "sa1_gen_16"
     And the saved chart should match the expected "sa1_gen_16" csv file
 
   # bidstacks
