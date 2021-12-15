@@ -7,7 +7,7 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
-#@skip
+@skip
   Scenario: Build test db from current prod db
     # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
@@ -19,7 +19,7 @@ Feature: Backup nem db on pybase and restore as test
     And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
-#@skip
+@skip
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
@@ -98,7 +98,7 @@ Feature: Backup nem db on pybase and restore as test
 
   # load 2016-09-28 where rooftop is of type DAILY !
 
-#@skip
+@skip
   Scenario: load system black in SA -- rooftop pv has DAILY as type
     Given I login to "test" on pybase
     And   go to "Database"
@@ -147,3 +147,55 @@ Scenario: compare latest core data to AEMO latest if poss
     Then we should match the AEMO data
     
 #Scenario: set date back and check "now" is correct using cy.clock() if poss
+
+# reload a day into test db that was loaded by the importer into prod and check we get same results which have been saved from prod
+# must cover period of 01:45 to 01:40 as nem has all data; test will only have what we load here
+
+@skip
+  Scenario: Tasmania gas running
+    Given I login to "test" on pybase
+    And   go to "Database"
+    And   Load historical data for "2021 09 22 01 00 23 02 00 load pybaseco_test"
+    # create event -- then won't need to load events above
+
+  Scenario: check tabular data
+    Given I login to "test" on pybase
+    And go to ". Events"
+    And I filter on "Tasmania gas running"
+    And I open the event
+    And save table "#t1" to file "tas_prices.csv"
+    And It should match the expected "tas_prices" csv file
+    And save table "#t2" to file "tas_interconnectors.csv"
+    And It should match the expected "tas_interconnectors" csv file
+
+  Scenario: check ft chart 1
+    Given I login to "test" on pybase
+    And go to ". Events"
+    And I filter on "Tasmania gas running"
+    And I open the event
+    And wait 2000 ms
+    And save chart "#c1" to file "tas_ft_chart"
+    And the saved chart should match the expected "tas_ft_chart" csv file
+  Scenario: check ft chart 2
+    And save chart "#c4" to file "tas_ft_diff_chart"
+    And the saved chart should match the expected "tas_ft_diff_chart" csv file
+
+  # -12 to 12 hours
+
+  Scenario: save qld chart
+    Given I login to "test" on pybase
+    And go to ". Events"
+    And I filter on "Tasmania gas running"
+    And I open the event
+    And go to "-12 to +12 hours"
+    And save chart "#c2-0" to file "qld_price_demand_tas"
+    And the saved chart should match the expected "qld_price_demand_tas" csv file
+  Scenario: save tas chart
+    And save chart "#c2-4" to file "tas_price_demand_tas"
+    And the saved chart should match the expected "tas_price_demand_tas" csv file
+  Scenario: save qld gen
+    And save chart "#c3-0" to file "qld_gen_tas"
+    And the saved chart should match the expected "qld_gen_tas" csv file
+  Scenario: save tas gen
+    And save chart "#c3-4" to file "tas_gen_tas"
+    And the saved chart should match the expected "tas_gen_tas" csv file
