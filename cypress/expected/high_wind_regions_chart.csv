@@ -14,7 +14,7 @@ NSW1,Hydro,,141.473
 NSW1,Solar,Junee Solar Farm,0.068
 NSW1,Solar,White Rock Solar Farm,0.09
 NSW1,Solar,,0.158
-NSW1,Wind,Bango 973 Wind Farm,9.79999
+NSW1,Wind,Bango Wind Farm,9.79999
 NSW1,Wind,Boco Rock Wind Farm,106.06
 NSW1,Wind,Bodangora Wind Farm,19.10231
 NSW1,Wind,Capital Wind Farm,99.68
@@ -55,8 +55,7 @@ QLD1,Solar,Longreach Solar Farm,0.059
 QLD1,Solar,Maryrorough Solar Farm,0.13
 QLD1,Solar,Oakey Solar Farm,0.322
 QLD1,Solar,Susan River Solar Farm,0.23
-QLD1,Solar,WARWICK SOLAR FARM 1,0.12
-QLD1,Solar,WARWICK SOLAR FARM 2,0.11
+QLD1,Solar,Warwick Solar Farm,0.22999999999999998
 QLD1,Solar,Yarranlea Solar Farm,0.35
 QLD1,Solar,,1.4642300000000001
 QLD1,Wind,Coopers Gap Wind Farm,52.86

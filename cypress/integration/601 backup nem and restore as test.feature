@@ -7,7 +7,6 @@ Feature: Backup nem db on pybase and restore as test
   BE VERY CAREFUL-- THIS LOGS IN TO THE *** nem *** DATBASE TO START TO GET THE LATEST SCHEMA
   AND CRITICAL SYSTEM TABLES AND RESTORES INTO THE TEST DATABASE. IF THIS GOES WRONG YOU COULD OVERWRITE THE NEM DB !!
 
-@skip
   Scenario: Build test db from current prod db
     # ***** login to "nem" as can be locked out of "test" -- CAREFUL!!!
     Given I login to "nem" on pybase
@@ -19,7 +18,6 @@ Feature: Backup nem db on pybase and restore as test
     And   Backup the "nem" db tables "py_named_values py_roles py_users py_views py_actions STATIONS MARKET events"
     And   Restore to the test db
 
-@skip
   Scenario: load a day of high wind data
     Given I login to "test" on pybase
     And   go to "Database"
@@ -98,7 +96,6 @@ Feature: Backup nem db on pybase and restore as test
 
   # load 2016-09-28 where rooftop is of type DAILY !
 
-@skip
   Scenario: load system black in SA -- rooftop pv has DAILY as type
     Given I login to "test" on pybase
     And   go to "Database"
@@ -151,7 +148,6 @@ Scenario: compare latest core data to AEMO latest if poss
 # reload a day into test db that was loaded by the importer into prod and check we get same results which have been saved from prod
 # must cover period of 01:45 to 01:40 as nem has all data; test will only have what we load here
 
-@skip
   Scenario: Tasmania gas running
     Given I login to "test" on pybase
     And   go to "Database"
