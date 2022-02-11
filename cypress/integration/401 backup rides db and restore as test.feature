@@ -15,5 +15,5 @@ Feature: Backup rides db and restore as test
   Scenario: Check Bikes table
     And   I login as a developer
     And   save "Bikes" to csv
-    Then  It should match the expected "Bikes" csv file
+    Then  It should exactly match the expected "Bikes" csv file
     And   I logout

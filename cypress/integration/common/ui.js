@@ -35,7 +35,14 @@ And("save table {string} to file {string}", (selector, fileName) => {
 
 Then("It should match the expected {string} csv file", (str) => {
   compareFilesUsingRegExp(
-  // compareFiles(
+    // compareFiles(
+    `./cypress/downloads/${str}.csv`,
+    `./cypress/expected/${str}.csv`
+  );
+});
+
+Then("It should exactly match the expected {string} csv file", (str) => {
+    compareFiles(
     `./cypress/downloads/${str}.csv`,
     `./cypress/expected/${str}.csv`
   );
