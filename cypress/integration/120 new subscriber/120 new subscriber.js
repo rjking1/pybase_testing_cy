@@ -1,5 +1,5 @@
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
-import { compareFiles } from "../common/utils.js";
+import { compareFilesUsingRegExp } from "../common/utils.js";
 
 And("clean up previously added members", () => {
   cy.execSQL("delete from members where Lastname = 'Test' "); // defaults to 'test' (as the DB name)
@@ -35,7 +35,7 @@ Then("I sort the list on {string}", (str) => {
 
 Then("Check member numbers", () => {
   cy.get("#searchBox"); // to make sure we wait to get back to list
-  compareFiles(
+  compareFilesUsingRegExp(
     "./cypress/downloads/All-members.csv",
     "./cypress/expected/All-members.csv"
   );
@@ -43,7 +43,7 @@ Then("Check member numbers", () => {
 
 Then("Check subscriber numbers", () => {
   cy.get("#searchBox"); // to make sure we wait to get back to list
-  compareFiles(
+  compareFilesUsingRegExp(
     "./cypress/downloads/All-subscribers.csv",
     "./cypress/expected/All-subscribers.csv"
   );

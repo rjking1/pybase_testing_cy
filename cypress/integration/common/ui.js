@@ -1,5 +1,5 @@
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
-import { compareFiles, exportTableToCSV } from "../common/utils.js";
+import { compareFiles, compareFilesUsingRegExp, exportTableToCSV } from "../common/utils.js";
 
 Then("I can see {string}", (str) => {
   cy.contains(str).should("exist");
@@ -27,14 +27,15 @@ And("save {string} to csv", (str) => {
 
 And("save table {string} to file {string}", (selector, fileName) => {
   exportTableToCSV(cy.get(selector), fileName);
-  cy.get(selector);
+  // cy.get(selector);
   // todo
   // will get quoted cells if we use utils.exportTableToCSV()
   // which is what Save To CSV button should use
 });
 
 Then("It should match the expected {string} csv file", (str) => {
-  compareFiles(
+  compareFilesUsingRegExp(
+  // compareFiles(
     `./cypress/downloads/${str}.csv`,
     `./cypress/expected/${str}.csv`
   );
